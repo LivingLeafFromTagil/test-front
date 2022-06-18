@@ -2,6 +2,7 @@ import '../OrgList/OrgList.css';
 import {Component} from 'react';
 import Wrapper from '../Wrapper/Wrapper';
 
+//Страница карточки организации
 const leader="Выбрать ответственного",
       admin="Выбрать администратора",
       region="Выбрать субъект",
@@ -100,25 +101,27 @@ export default class OrgCard extends Component{
             <Wrapper classes={this.state.shown} onAdd={this.onChoice} formTitle={this.state.title} formHint={this.state.hint}/>
             <h1>Название организации: </h1>
             <h1>ИНН: </h1>
-            <div style={{display: "flex", justifyContent: "space-between"}} className="main-paragraph">
-              <p>Ответственный от организации: {this.state.t1}</p>
+            <div className="main-paragraph main-paragraph-card">
+              <p>Ответственный от организации: <p>{this.state.t1}</p></p>
               <button className="add-button" onClick={this.showForm}>Выбрать ответственного</button>
             </div>
             <hr/>
-            <div style={{display: "flex", justifyContent: "space-between"}} className="main-paragraph">
+            <div className="main-paragraph main-paragraph-card">
               <p>Администратор: {this.state.t2}</p>
               <button className="add-button" onClick={this.showForm}>Выбрать администратора</button>
             </div>
-            <div style={{display: "flex", justifyContent: "space-between"}} className="main-paragraph">
+            <div className="main-paragraph main-paragraph-card">
               <p>Субъект РФ: {this.state.t3}</p>
               <button className="add-button" onClick={this.showForm}>Выбрать субъект</button>
             </div>
-            <div style={{display: "flex", justifyContent: "space-between"}} className="main-paragraph">
+            <div className="main-paragraph main-paragraph-card">
               <p>Категория: {this.state.t4}</p>
               <button className="add-button" onClick={this.showForm}>Выбрать категорию</button>
             </div>
           </div>
-
+          <div style={{marginTop: '20px'}}>
+            <a href='/' className='about'>На главную</a>
+          </div>
         </div>
       </div>
     );

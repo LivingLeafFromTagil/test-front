@@ -1,4 +1,0 @@
-{
-  "port": 5000,
-  "dbUri": "mongodb+srv://leaf:GfgfFylhtq@cluster0.tjfqx.mongodb.net/test-db?retryWrites=true&w=majority"
-}

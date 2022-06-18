@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import '../OrgList/OrgList.css';
 
+//Компонент-форма для добавления организаций
 class AddForm extends Component{
   constructor(props){
     super(props);
@@ -34,9 +35,9 @@ class AddForm extends Component{
     return(
       <form action="http://localhost:8080/orgs" onSubmit={this.onSubmit} className="add-form" method="post">
         <h2>Название организации</h2>
-        <input name="n" onChange={this.onNameChange} className="add-name" placeholder="Введите название"></input>
+        <input name="n" type='text' required onChange={this.onNameChange} className="add-name" placeholder="Введите название"></input>
         <h2>ИНН организации</h2>
-        <input name="t" onChange={this.onTinChange} className="add-tin" placeholder="Введите ИНН"></input>
+        <input name="t" type='number' required onChange={this.onTinChange} className="add-tin" placeholder="Введите ИНН"></input>
         <button type="submit" className="add-button">Добавить</button>
       </form>
     );

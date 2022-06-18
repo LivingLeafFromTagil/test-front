@@ -9,6 +9,7 @@ class ChoiceForm extends Component{
     };
     this.onNameChange=this.onNameChange.bind(this);
     this.onSubmit=this.onSubmit.bind(this);
+    this.noDigits=this.noDigits.bind(this);
   }
 
   onNameChange(e){
@@ -25,11 +26,16 @@ class ChoiceForm extends Component{
     });
   }
 
+  noDigits(e) {
+    if ("1234567890".indexOf(e.key) != -1)
+      e.preventDefault();
+  }
+
   render(){
     return(
       <form onSubmit={this.onSubmit} className="add-form">
         <h2>{this.props.formTitle}</h2>
-        <input onChange={this.onNameChange} className="add-name" placeholder={this.props.formHint} value={this.state.name}></input>
+        <input onKeyPress={this.noDigits} onChange={this.onNameChange} type='text' required className="add-name" placeholder={this.props.formHint} value={this.state.name}></input>
         <button type="submit" className="add-button">Добавить</button>
       </form>
     );

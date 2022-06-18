@@ -30,6 +30,28 @@
   font-size: 14px;
 }
 
+.hi{
+  text-align: center;
+  height: 675px;
+}
+
+.hi>*{
+  position: relative;
+  top: 50%;
+  color: white;
+  background-color: rgba(0,0,0,0);
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.hi1{
+  font-size: 44px;
+}
+
+.hi2{
+  font-size: 32px;
+}
+
 .app-body{
   margin: 75px 280px 0;
 }
@@ -85,6 +107,22 @@
   margin-bottom: 20px;
 }
 
+.main-paragraph-card{
+  display: flex;
+  justify-content: space-between;
+}
+
+.main-orgs{
+  border-radius: 10px;
+  background-color: white;
+  padding: 30px 25px 20px;
+  margin-bottom: 20px;
+}
+
+.main-orgs *{
+  background-color: white;
+}
+
 .main-search{
   border-radius: 10px;
   background-color: white;
@@ -97,7 +135,7 @@
 }
 
 .main-search input{
-  width: 600px;
+  width: 100%;
   margin-top: 10px;
   margin-bottom: 5px;
   padding: 5px;
@@ -124,6 +162,11 @@
   padding: 5px;
   border: inherit solid 1px;
   border-radius: 5px;
+  width: 40%;
+}
+
+.modal-wrapper>.add-form>input{
+  width: 98%;
 }
 
 .main-search .add-button{
@@ -137,33 +180,40 @@
   background-color: rgb(180, 180, 180);
 }
 
-.main-search .org-table{
+.main-orgs{
+  min-width: 450px;
+}
+
+.main-orgs .org-table{
   width: 100%;
   border: white solid 1px;
   border-collapse: collapse;
 }
 
-.main-search .org-table td{
+.main-orgs .org-table td{
   width: 250px;
   padding: 10px;
   padding-left: 0;
   border: white solid 1px;
 }
 
-.main-search .org-table .org-table-header>td{
+.main-orgs .org-table .org-table-header>td{
   border-bottom: rgb(200, 200, 200) solid 1px;
 }
 
-.main-search .org-table .org-table-elem>td{
+.main-orgs .org-table .org-table-elem>td{
   border:none;
 }
 
-.main-search .org-table .org-table-elem:nth-child(even)>td{
-  background-color: rgba(190, 220, 240, 0.4);
+.main-orgs .org-table .org-table-elem>td>*{
+  text-decoration: none;
 }
 
-.main-search .org-table .org-table-elem .elem-name>a{
-  background-color: rgba(190, 220, 240, 0.4);
+.main-orgs .org-table .org-table-elem:nth-child(even)>td,
+.main-orgs .org-table .org-table-elem:nth-child(even)>td>p,
+.main-orgs .org-table .org-table-elem:nth-child(even) .elem-name>a, 
+.main-orgs .org-table .org-table-elem:nth-child(even) .elem-name>a>p{
+  background-color: rgba(190, 220, 240);
 }
 
 .none{
@@ -172,4 +222,157 @@
 
 .show{
   display: flex;
+}
+
+.about{
+  text-decoration: none;
+  color: black;
+  background: lightblue;
+  border: 1px solid lightblue;
+  border-radius: 3px; 
+  padding: 7px;
+}
+
+.vk{
+  margin-right: 7px;
+}
+
+.about-page{
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 100px;
+}
+
+.about-text{
+  width: 65%;
+}
+
+.about-greeting{
+  font-size: 36px;
+  margin-bottom: 15px;
+}
+
+.about-description{
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.avatar{
+  width: 30%;
+}
+
+@media (max-width: 1020px){
+
+  .vk{
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .app-body{
+    margin: 50px 200px;
+  }
+
+  .about{
+    display: block;
+    text-align: center;
+  }
+
+  .about-page{
+    display: block;
+    text-align: center;
+  }
+
+  .about-text{
+    text-align: center;
+    width: 100%;
+  }
+
+  .avatar{
+    width: 40%;
+  }
+}
+
+@media (max-width: 920px){
+  .hi{
+    height: 385px;
+  }
+
+  .hi1{
+    font-size: 28px;
+  }
+
+  .hi2{
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 800px){
+  .modal-wrapper>.add-form>input{
+    width: 90%;
+  }
+}
+
+@media (max-width: 750px){
+  .hi{
+    height: 385px;
+  }
+
+  .hi1{
+    font-size: 24px;
+  }
+
+  .hi2{
+    font-size: 20px;
+  }
+
+  .app-body{
+    margin: 50px 100px;
+  }
+
+  .avatar{
+    width: 60%;
+  }
+  .about-page{
+    margin: 10px 50px;
+  }
+
+}
+
+@media (max-width: 550px){
+
+  .app-body{
+    margin: 20px 50px;
+  }
+
+  .avatar{
+    width: 100%;
+  }
+
+  .about-page{
+    margin: 10px 20px;
+  }
+
+  
+
+  .main-paragraph-card{
+    display: block;
+  }
+
+  .main-paragraph-card>*{
+    margin-bottom: 10px;
+  }
+
+  .main-paragraph-card>p{
+    max-width: 250px;
+  }
+}
+
+@media (max-width: 450px){
+  .hi1, .hi2{
+    top: 30%;
+  }
+
+  .hi1{
+    font-size: 22px;
+  }
 }

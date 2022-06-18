@@ -4,10 +4,10 @@ import OrgTable from '../OrgTable';
 import {Link} from 'react-router-dom';
 import {Component} from 'react';
 import Wrapper from '../Wrapper/Wrapper';
-import funn, {postss} from '../orgInfo'
-import fetch from 'cross-fetch';
+import funn, {postss} from '../orgInfo';
+import urfu from './urfu.jpg'
 
-
+//Страница списка организаций, основная
 class OrgList extends Component {
   constructor(props){
     super(props);
@@ -51,7 +51,7 @@ class OrgList extends Component {
     this.setState(()=>{
       const newArr = [...this.state.data, newOrg];
       console.log(newArr);
-      
+      postss(newArr);
       return{
         data: newArr,
         shown: "modal-wrapper none n1"
@@ -62,40 +62,46 @@ class OrgList extends Component {
   }
 
   render(){
-    this.getData();
+    if (this.state.data.length <= 0) this.getData();
     return (
-    <div className="app-body">
-      <div className="app-header">
-        <h1>Участники</h1>
-      </div>
-      <div className="app-main">
-        <div className="main-refs">
-          <Link to="/">Реестр организаций</Link>
-          <button className="add-func" onClick={this.showForm}>Добавление организации</button>
+    <>
+      <div className='hi' style={{background: `url(${urfu}) center no-repeat`, backgroundSize: 'cover'}}>
+          <h1 className='hi1'>Добро пожаловать на сайт "Science-activity organisations"!</h1>
+          <h1 className='hi2'>Изучите организации, деятельность которых связана с научной, или добавьте свои с помощью нашей системы!</h1>
         </div>
-        <div className="main-paragraph">
-          <p>Выберите организацию по названию или ИНН для присвоения ей категории, направления в составе УМНОЦ, роли. Далее заполните профиль, выбрав технологические проекты и мероприятия, в которых участвует организация.</p>
+    
+      <div className="app-body" style={{marginBottom: "30px"}}>
+        <div className="app-header">
+          <h1>Участники</h1>
         </div>
-        <div className="main-search">
-          <h2>Поиск</h2>
-          <Search/>
-          
+        <div className="app-main">
+          <div className="main-refs">
+            <Link to="/">Реестр организаций</Link>
+            <button className="add-func" onClick={this.showForm}>Добавление организации</button>
           </div>
-
-        <div className="main-search" style={{width: 0, height: 0, padding: 0}}>
-          <Wrapper classes={this.state.shown} onAdd={this.onAdd}/>
-        </div>
-
+          <div className="main-paragraph">
+            <p>Выберите организацию по названию или ИНН для присвоения ей категории, направления, роли. Далее заполните профиль, выбрав технологические проекты и мероприятия, в которых участвует организация.</p>
+          </div>
           <div className="main-search">
+            <h2>Поиск</h2>
+            <Search/>
             
-          <h2>Всего организаций: {this.state.data.length}</h2>
-          <OrgTable orgs={this.state.data}/>
+            </div>
+
+          <div className="main-search" style={{width: 0, height: 0, padding: 0}}>
+            <Wrapper classes={this.state.shown} onAdd={this.onAdd}/>
           </div>
+
+            <div className="main-orgs">
+              
+            <h2>Всего организаций: {this.state.data.length}</h2>
+            <OrgTable orgs={this.state.data}/>
+            </div>
+        </div>
+          
+        <a class="about" style={{textDecoration: "none", color: "black", background: "lightblue", border: "1px solid lightblue", borderRadius: "3px", padding: "7px"}} href='/about'>Контакты</a>
       </div>
-        
-    
-    </div>
-    
+    </>
   );
 }
 }

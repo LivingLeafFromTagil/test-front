@@ -15,7 +15,6 @@ const postss = async (dataArr) =>{
     body: dataArr,
     headers:{
       "Content-Type":"application/json",
-      "Access-Control-Allow-Origin": "*"
     }
   });
   return await res.json();

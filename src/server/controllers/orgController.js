@@ -3,10 +3,15 @@ const ApiError = require('../error/apiError');
 
 class OrgController {
   //добавление организации
-  async addOrg(req, res) {
+  async addOrg(req, res, next) {
     const {name, tin, info, userId, leaderId, regionId, categoryId} = req.body;
-    const org = await Org.create({name, tin, info, userId, leaderId, regionId, categoryId});
-    return res.json(org);
+    const existingOrg = await Org.findOne({where:{name, tin}});
+    if (existingOrg) {
+      return next(ApiError.badRequest('This company exists'));
+    } else {
+      const org = await Org.create({name, tin, info, userId, leaderId, regionId, categoryId});
+      return res.json(org);
+    }
   }
 
   //получение списка организаций

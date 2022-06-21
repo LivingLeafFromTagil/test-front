@@ -1,12 +1,16 @@
 import '../OrgList/OrgList.css';
 import '../OrgElem/OrgElem'
 import OrgElem from '../OrgElem/OrgElem';
+import { useContext } from 'react';
+import { observer } from 'mobx-react-lite';
+import { Context } from '../..';
 
-function OrgTable(props){
+const OrgTable = observer(() => {
+  const {org} = useContext(Context);
 
-  const elements = props.orgs.map((elem)=>{
+  const elements = org.orgs.map((elem)=>{
     return(
-      <OrgElem {...elem}/>
+      <OrgElem key={elem.id} organ={elem}/>
     );
   })
 
@@ -27,6 +31,6 @@ function OrgTable(props){
       );
   
   
-}
+})
 
 export default OrgTable

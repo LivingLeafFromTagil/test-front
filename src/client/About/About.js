@@ -10,7 +10,7 @@ export default function About(){
   return(<>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <div className='about-page'>
-      <img className='avatar animate__animated animate__rotateIn' src={avatar}/>
+      <img className='avatar animate__animated animate__rotateIn' src={avatar} alt='avatar'/>
       <div className='about-text'>
         <h1 className='about-greeting animate__animated animate__fadeInRightBig'>Привет!</h1>
         <h1 className='about-description animate__animated animate__fadeInRightBig animate__delay-1s'>Меня зовут Роман! Я - начинающий frontend-разработчик! Учусь в УрФУ! Жизнь прекрасна!</h1>

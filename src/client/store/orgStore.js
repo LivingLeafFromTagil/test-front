@@ -1,44 +1,19 @@
 import { makeAutoObservable } from "mobx";
 
-export default class OrgStore{
+export default class GameStore{
   constructor() {
     this._categories = [
-      {
-        id: 1,
-        name: 'НИИ',
-      },
-      {
-        id: 2,
-        name: 'Коммерческая организация',
-      },
-    ];
-    this._regions = [
-      {
-        id: 1,
-        name: 'Свердловская область',
-      },
-      {
-        id: 2,
-        name: 'Москва и МО',
-      },
-      {
-        id: 3,
-        name: 'Челябинская область',
-      }
-    ];
-    this._leaders = [
-      {
-        id: 1,
-        name: 'Злобин Сергей Евгеньевич',
-      },
-      {
-        id: 2,
-        name: 'Кочетов Роман Вячеславович',
-      }
-    ];
-    this._orgs = [
       
-    ]
+    ];
+    this._developers = [
+      
+    ];
+    this._years = [
+
+    ];
+    this._games = [
+      
+    ];
     makeAutoObservable(this);
   }
 
@@ -46,16 +21,16 @@ export default class OrgStore{
     this._categories = categories;
   }
 
-  setRegions(regions) {
-    this._regions = regions;
+  setYears(years) {
+    this._years = years;
   }
 
-  setLeaders(leaders) {
-    this._leaders = leaders;
+  setDevelopers(developers) {
+    this._developers = developers;
   }
 
-  setOrganizations(orgs) {
-    this._orgs = orgs;
+  setGames(games) {
+    this._games = games;
   }
 
 
@@ -63,16 +38,15 @@ export default class OrgStore{
     return this._categories;
   }
 
-  get regions() {
-    return this._regions
+  get years() {
+    return this._years;
   }
 
-  get leaders() {
-    return this._leaders
+  get developers() {
+    return this._developers;
   }
 
-  get orgs() {
-    return this._orgs
+  get games() {
+    return this._games;
   }
-
 }

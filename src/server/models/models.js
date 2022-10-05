@@ -8,11 +8,11 @@ const User = sequelize.define('user', {
   role: {type: DataTypes.STRING, defaultValue: "USER"},
 });
 
-const Org = sequelize.define('org', {
+const Game = sequelize.define('game', {
   id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
   name: {type: DataTypes.STRING, unique: true},
-  tin: {type: DataTypes.INTEGER, unique: true},
-  info: {type: DataTypes.STRING}
+  info: {type: DataTypes.STRING, unique: true},
+  ref: {type: DataTypes.STRING, unique: true}
 });
 
 const Category = sequelize.define('category', {
@@ -20,32 +20,56 @@ const Category = sequelize.define('category', {
   name: {type: DataTypes.STRING, unique: true},
 });
 
-const Region = sequelize.define('region', {
+const Developer = sequelize.define('developer', {
   id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
   name: {type: DataTypes.STRING, unique: true},
 });
 
-const Leader = sequelize.define('leader', {
+const Year = sequelize.define('year', {
   id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
-  name: {type: DataTypes.STRING},
+  value: {type: DataTypes.INTEGER, unique: true}
 });
 
-User.hasMany(Org);
-Org.belongsTo(User);
+const DeveloperCategory = sequelize.define('developer_category', {
+  id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+});
 
-Leader.hasMany(Org);
-Org.belongsTo(Leader);
+const DeveloperYear = sequelize.define('developer_year', {
+  id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+});
 
-Region.hasMany(Org);
-Org.belongsTo(Region);
+const CategoryYear = sequelize.define('category_year', {
+  id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+});
 
-Category.hasMany(Org);
-Org.belongsTo(Category);
+User.hasMany(Game);
+Game.belongsTo(User);
+
+Developer.hasMany(Game);
+Game.belongsTo(Developer);
+
+Category.hasMany(Game);
+Game.belongsTo(Category);
+
+Year.hasMany(Game);
+Game.belongsTo(Year);
+
+Developer.belongsToMany(Category, {through: DeveloperCategory});
+Category.belongsToMany(Developer, {through: DeveloperCategory});
+
+Developer.belongsToMany(Year, {through: DeveloperYear});
+Year.belongsToMany(Developer, {through: DeveloperYear});
+
+Category.belongsToMany(Year, {through: CategoryYear});
+Year.belongsToMany(Category, {through: CategoryYear});
 
 module.exports = {
   User,
-  Leader,
-  Region,
+  Developer,
   Category,
-  Org,
+  Game,
+  Year,
+  DeveloperCategory,
+  DeveloperYear,
+  CategoryYear
 }

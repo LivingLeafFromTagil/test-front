@@ -1,12 +1,16 @@
 const Router = require('express');
 const userRouter = require('./userRouter');
-const orgRouter = require('./orgRouter');
+const gameRouter = require('./gameRouter');
 const catRouter = require('./categoryRouter');
+const yearRouter = require('./yearRouter');
+const devRouter = require('./developerRouter');
 
 const router = new Router();
 
 router.use('/user', userRouter);
-router.use('/org', orgRouter);
-router.use('/cat', catRouter);
+router.use('/developer', devRouter);
+router.use('/category', catRouter);
+router.use('/year', yearRouter);
+router.use('/game', gameRouter);
 
 module.exports = router;

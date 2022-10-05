@@ -15,7 +15,12 @@ class CategoryController {
       return next(ApiError.badRequest('Category ID is invalid'));
     }
     return res.json(category);
-  }
+  };
+
+  async getCategories(req, res) {
+    const years = await Category.findAll();
+    return res.json(years);
+  };
 
   async deleteCategory(req, res, next) {
     const {id} = req.params;
@@ -25,7 +30,7 @@ class CategoryController {
     }
     await Category.destroy({where: {id}});
     return res.json({message: `${category.name} was deleted`});
-  }
+  };
 }
 
 module.exports = new CategoryController();
